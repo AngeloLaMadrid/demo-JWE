@@ -1,0 +1,113 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  background-color: #e5ddd5; /* Color de fondo similar a WhatsApp */
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #dcf8c6; /* Verde claro de WhatsApp */
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin; /* Hace el scroll más delgado */
+  scrollbar-color: #b6f256 #e5ddd5; /* Colores del scroll */
+}
+
+.message {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 7.5px;
+  max-width: 60%;
+  word-wrap: break-word;
+  position: relative;
+  line-height: 1.5;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1); /* Sombra suave */
+}
+.message-wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.copy-icon {
+  position: absolute;
+  right: -25px; /* Ajustar según sea necesario para posicionar fuera de la burbuja */
+  top: 0;
+  cursor: pointer;
+}
+.message {
+  position: relative;
+}
+.message.user {
+  background-color: #0c9fcc; /* Verde oscuro para mayor contraste */
+  color: white; /* Cambiar el color del texto a blanco para mejorar la legibilidad */
+  align-self: flex-end;
+  border: none;
+}
+
+.message.other {
+  background-color: #ffffff; /* Blanco de mensaje recibido */
+  color: black;
+  align-self: flex-start;
+}
+
+.message-input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ddd;
+}
+.copy-icon {
+  cursor: pointer;
+  font-size: 1.5em; /* Aumenta el tamaño del emoji */
+  margin-left: 8px; /* Añade un poco de espacio a la izquierda del emoji */
+  color: #4CAF50; /* Cambia el color del emoji */
+  background-color: #f0f0f0; /* Añade un fondo para hacerlo resaltar */
+  border-radius: 50%; /* Hace el fondo circular */
+  padding: 5px; /* Añade un poco de espacio alrededor del emoji */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Añade una sombra ligera para darle profundidad */
+}
+.message-input input {
+  flex: 1;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.message-input input::placeholder {
+  color: #888;
+}
+
+.message-input button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: #34b7f1; /* Azul de botón enviar */
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.message-input button:hover {
+  background-color: #1191ce;
+}
+
+/* Añadir icono de enviar al botón, se puede usar un emoji o una imagen */
+.message-input button::after {
+  content: '📩'; /* Emoji de enviar */
+  display: inline-block;
+  margin-left: 5px;
+}
