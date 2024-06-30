@@ -53,3 +53,5 @@ Nuestro proyecto implementa una robusta lógica de encriptación distribuida a t
 El segundo servicio, ubicado en `src/app/service/serviceJWE2.ts`, aprovecha las capacidades de la biblioteca `jose` para generar y manejar claves de encriptación dinámicamente. Este enfoque permite una mayor flexibilidad y adaptabilidad, facilitando la generación de claves seguras sin la necesidad de gestionarlas manualmente.
 
 Ambos servicios son fundamentales para la seguridad de nuestra aplicación, ofreciendo métodos de encriptación avanzados que se adaptan a diferentes necesidades y escenarios de uso.
+
+## 🖼️ Galería
