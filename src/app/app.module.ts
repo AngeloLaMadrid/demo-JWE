@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr'; // Importa ToastrModule
 
 @NgModule({
   declarations: [
@@ -15,8 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     ChatComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,FormsModule, HttpClientModule
+    BrowserModule,BrowserAnimationsModule,
+    AppRoutingModule,FormsModule, HttpClientModule,ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

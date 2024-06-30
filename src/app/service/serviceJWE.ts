@@ -1,6 +1,9 @@
-import { generateKeyPair, exportJWK, importJWK, CompactEncrypt, compactDecrypt } from 'jose';
-
+import { CompactEncrypt, compactDecrypt } from 'jose';
+import { Injectable } from '@angular/core';
 // VERIFICAR EL JWE: https://dinochiesa.github.io/jwt/
+@Injectable({
+  providedIn: 'root' // Esto hace que el servicio esté disponible en toda la aplicación
+})
 export class EncryptionService {
   private publicKey: any;
   private privateKey: any;
@@ -10,11 +13,9 @@ export class EncryptionService {
   constructor() {
     this.init();
     console.log('---------------------------');
-    console.log('---------------------------');
-    console.log('--Versión 1: manualmente --');
-    console.log('---------------------------');
-    console.log('---------------------------');
-  
+    console.log('--Versión 2: manualmente --');
+    console.log('---------------------------\n\n');
+
   }
   // Lo que hace esto es que inicializa las claves publicas y privadas
   private async init() {
@@ -52,7 +53,7 @@ export class EncryptionService {
         );
       }
     };
-  //Generados mediante: https://dinochiesa.github.io/jwt/
+    //Generados mediante: https://dinochiesa.github.io/jwt/
     const publicKey = `-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3/LMwfzY1YBq5mcOK6zz
 a52lLjuPrtW3lXzYlXwlFlTzMlwe4X1Paok+rP2JBlBSDzqNGHs3R6Vr3jnNkN2r
@@ -103,10 +104,10 @@ VsK33AMjXhW2/dbLuoHOeA==
     if (!this.publicKeyCrypto) {
       throw new Error('Public key no esta inicializando OJO!!');
     }
-    // Usa publicKeyCrypto en lugar de this.publicKey
+    // Usando publicKeyCrypto v2
     const encryptedMessage = await new CompactEncrypt(encoder.encode(message))
       .setProtectedHeader({ alg: 'RSA-OAEP-256', enc: 'A256GCM' })
-      .encrypt(this.publicKeyCrypto); // Cambiado a publicKeyCrypto
+      .encrypt(this.publicKeyCrypto)
     return encryptedMessage;
   }
 
@@ -114,9 +115,34 @@ VsK33AMjXhW2/dbLuoHOeA==
     if (!this.privateKeyCrypto) {
       throw new Error('Public key no esta inicializando OJO!!');
     }
-    // Usa privateKeyCrypto en lugar de this.privateKey
-    const { plaintext } = await compactDecrypt(encryptedMessage, this.privateKeyCrypto); // Cambiado a privateKeyCrypto
+    // Usando privateKeyCrypto v2
+    const { plaintext } = await compactDecrypt(encryptedMessage, this.privateKeyCrypto); 
     const decoder = new TextDecoder();
     return decoder.decode(plaintext);
   }
+
+  public async encryptUsername(username: string): Promise<string> {
+    const encoder = new TextEncoder();
+    if (!this.publicKeyCrypto) {
+      throw new Error('La clave pública no está inicializada.');
+    }
+    // Encriptar el nombre de usuario
+    const encryptedUsername = await new CompactEncrypt(encoder.encode(username))
+      .setProtectedHeader({ alg: 'RSA-OAEP-256', enc: 'A256GCM' })
+      .encrypt(this.publicKeyCrypto);
+    return encryptedUsername;
+  }
+
+public async decryptUsername(encryptedUsername: string): Promise<string> {
+  try {
+    if (!this.privateKeyCrypto) {
+      throw new Error('La clave privada no está inicializada.');
+    }
+    const { plaintext } = await compactDecrypt(encryptedUsername, this.privateKeyCrypto);
+    const decoder = new TextDecoder();
+    return decoder.decode(plaintext);
+  } catch (error) {
+    throw new Error('No se encontró el nombre de usuario.');
+  }
+}
 }

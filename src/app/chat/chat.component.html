@@ -1,9 +1,7 @@
 <div class="chat-container">
   <div class="messages">
     <div *ngFor="let message of messages; let i = index" class="message" [class.user]="message.sender === 'user'" [class.other]="message.sender !== 'user'">
-      <!-- Muestra el contenido del mensaje sin el emoji -->
       <span [innerText]="message.content.replace(' 📋', '')"></span>
-      <!-- Agrega un botón o ícono de copiar al lado del mensaje si este contiene el emoji -->
       <span *ngIf="message.content.includes(' 📋')" class="copy-icon" (click)="copyMessageToClipboard(i)">📋</span>
     </div>
   </div>
