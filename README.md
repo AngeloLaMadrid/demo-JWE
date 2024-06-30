@@ -55,3 +55,24 @@ El segundo servicio, ubicado en `src/app/service/serviceJWE2.ts`, aprovecha las 
 Ambos servicios son fundamentales para la seguridad de nuestra aplicación, ofreciendo métodos de encriptación avanzados que se adaptan a diferentes necesidades y escenarios de uso.
 
 ## 🖼️ Galería
+
+![Login](https://github.com/AngeloLaMadrid/demo-JWE/assets/101282128/eb2de488-a876-4181-b5c5-145f965ec349)
+
+> [!NOTE]  
+> Se muestra el proceso de inicio de sesión en la aplicación.
+
+![Error de Credencial](https://github.com/AngeloLaMadrid/demo-JWE/assets/101282128/5b642b43-4673-4395-b3d6-fe1083392bb0)
+
+> [!NOTE]  
+> Este gif muestra el mensaje de error que se envía cuando el usuario introduce una credencial incorrecta.
+
+![Uso del Chat](https://github.com/AngeloLaMadrid/demo-JWE/assets/101282128/0bb93dcd-de09-4a0e-86de-65eecd88fd24)
+
+> [!NOTE]  
+> En este gif se puede ver cómo se utiliza el chat y cómo el sistema retorna el texto encriptado, demostrando la funcionalidad de encriptación.
+
+![Copiado de Texto Encriptado](https://github.com/AngeloLaMadrid/demo-JWE/assets/101282128/c846da16-dffc-404b-afd4-82c4af79cf7c)
+> [!NOTE]  
+> Se muestra cómo se utiliza la funcion de copiado para copiar el texto encriptado y pegarlo en una página [externa](https://dinochiesa.github.io/jwt/), demostrando que el proyecto funciona y cumple con JWE.
+
+
